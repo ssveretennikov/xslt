@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><library>
+    <books>
+        <book>
+            <title>Clean Architecture</title>
+            <authors>
+                <id>1</id>
+            </authors>
+        </book>
+        <book>
+            <title>Экстремальное программирование: планирование</title>
+            <authors>
+                
+                <id>3</id>
+            </authors>
+        </book>
+        <book>
+            <title>Онтодидактика в математике</title>
+            <authors>
+                
+            </authors>
+        </book>
+    </books>
+    
+</library>

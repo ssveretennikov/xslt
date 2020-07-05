@@ -28,6 +28,14 @@ public class Main {
         transformer = factory.newTransformer(xslt);
         transformer.transform(xml, new StreamResult(new File("out_authors.xml")));
 
+        xslt = new StreamSource(new File("redundant_authors_without_empty.xsl"));
+        transformer = factory.newTransformer(xslt);
+        transformer.transform(xml, new StreamResult(new File("out_authors_without_empty.xml")));
+
+        xslt = new StreamSource(new File("redundant_books_one_en_authors.xsl"));
+        transformer = factory.newTransformer(xslt);
+        transformer.transform(xml, new StreamResult(new File("out_books_one_en_authors.xml")));
+
 
         xslt = new StreamSource(new File("task3.xsl"));
         transformer = factory.newTransformer(xslt);

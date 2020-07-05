@@ -13,12 +13,11 @@
 	<!--	копирование всего xml-->
 	<xsl:import href="_identity.xsl"/>
 
-	<!--	мьютим лишних авторов-->
-	<xsl:template match="book/authors/id
+	<!--	мьютим лишние книги-->
+	<xsl:template match="book
 			[
-				string-length(key('authors', .)/name)
-				=
-				string-length(translate(key('authors', .)/name, $vAlpha, ''))
+			count(authors/id[string-length(key('authors', .)/name) = string-length(translate(key('authors', .)/name, $vAlpha, ''))])
+			= count(authors/id)
 			]
 		">
 	</xsl:template>

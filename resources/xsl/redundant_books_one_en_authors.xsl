@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+	<!--	копирование всего xml. * импорт должен осуществляться до всех других операций	-->
+	<xsl:import href="_identity.xsl"/>
+
 	<xsl:output method="xml"
 				encoding="UTF-8"
 				indent="yes"/>
@@ -10,26 +14,13 @@
 
 	<xsl:key name="authors" match="/library/authors/author" use="id"/>
 
-	<!--	копирование всего xml-->
-	<xsl:import href="_identity.xsl"/>
-
-	<!--	мьютим лишних авторов -->
-	<xsl:template match="book/authors/id
+	<!--	мьютим лишние книги-->
+	<xsl:template match="book
 			[
-				string-length(key('authors', .)/name)
-				=
-				string-length(translate(key('authors', .)/name, $vAlpha, ''))
+			count(authors/id[string-length(key('authors', .)/name) = string-length(translate(key('authors', .)/name, $vAlpha, ''))])
+			= count(authors/id)
 			]
 		">
-	</xsl:template>
-
-	<!--	убираем тег authors если нет авторов -->
-	<xsl:template match="//book/authors
-			[
-			count(id[string-length(key('authors', .)/name) = string-length(translate(key('authors', .)/name, $vAlpha, ''))])
-			= count(id)
-			]
-	">
 	</xsl:template>
 
 	<!--	мьютим справочник авторов-->
